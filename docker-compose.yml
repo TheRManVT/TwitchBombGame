@@ -1,0 +1,21 @@
+services:
+  twitch-bot:
+    build: .
+    container_name: twitch-bomb
+    restart: unless-stopped
+    environment:
+      - TWITCH_USERNAME=${TWITCH_USERNAME}
+      - TWITCH_OAUTH_TOKEN=${TWITCH_OAUTH_TOKEN}
+      - TWITCH_CHANNEL=${TWITCH_CHANNEL}
+      - MIN_MESSAGES=${MIN_MESSAGES:-5}
+      - MAX_MESSAGES=${MAX_MESSAGES:-30}
+      - MIN_ARMED_MESSAGES=${MIN_ARMED_MESSAGES:-3}
+      - MAX_ARMED_MESSAGES=${MAX_ARMED_MESSAGES:-15}
+    volumes:
+      - ./bot:/app
+      - bot-data:/app/data
+    networks:
+      - npm_npm
+
+volumes:
+  bot-data:
