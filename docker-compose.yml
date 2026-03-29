@@ -14,8 +14,6 @@ services:
     volumes:
       - ./bot:/app
       - bot-data:/app/data
-    networks:
-      - npm_npm
 
 volumes:
   bot-data:
