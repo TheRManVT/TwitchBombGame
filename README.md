@@ -72,7 +72,6 @@ self.ignored_users = {
 ```
 
 ### 5. Run with Docker
-Make sure your `npm_npm` Docker network exists (used by Nginx Proxy Manager), then:
 ```bash
 docker compose up -d
 ```
