@@ -209,15 +209,29 @@ class PhraseBot(commands.Bot):
  
     @commands.command(name='currentword')
     async def current_word_cmd(self, ctx):
-        """Shows the secret word with 4 words of context on each side (only works while armed)."""
+        """Shows the secret word with context, but reduces remaining countdown by a percentage."""
         if self.bomb_state != STATE_ARMED:
             await ctx.send(", 💤 No bomb is armed right now.")
             return
  
+        # Punishment — reduce remaining messages by this percentage (change as needed)
+        punishment_percentage = 0.50
+ 
+        remaining = self.armed_trigger - self.armed_count
+        reduction = max(1, round(remaining * punishment_percentage))
+        self.armed_trigger = max(self.armed_count + 1, self.armed_trigger - reduction)
+        new_remaining = self.armed_trigger - self.armed_count
+ 
+        await ctx.send(
+            f", ⚠️ Cheeky! Using !currentword costs you {int(punishment_percentage * 100)}% "
+            f"of the remaining countdown! {reduction} message(s) removed — "
+            f"{new_remaining} message(s) left before detonation... 💣"
+        )
+ 
         idx = self.word_list.index(self.secret_word)
         total = len(self.word_list)
-        before = 8
-        after  = 8
+        before = 4
+        after  = 4
  
         # If not enough words before, take extras from after and vice versa
         shortage_before = max(0, before - idx)
@@ -234,7 +248,7 @@ class PhraseBot(commands.Bot):
         ]
  
         await ctx.send(f", 🔍 Secret word context: {', '.join(context_words)}")
- 
+  
  
 if __name__ == "__main__":
     bot = PhraseBot()
