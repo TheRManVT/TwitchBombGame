@@ -31,6 +31,7 @@ A secret word is chosen at random from the word list. The bot announces that the
 | Command | Description |
 |---|---|
 | `!bombstats` | Shows current state and messages remaining (mod-friendly) |
+| `!currrentword` | Shows the possible secret words in the list (capped at 21 words, can be changed with changing `before` and `after`|
 
 ---
 
