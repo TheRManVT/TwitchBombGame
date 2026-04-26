@@ -243,7 +243,7 @@ class PhraseBot(commands.Bot):
         end   = min(total, idx + after + 1)
  
         context_words = [
-            f"[{w}]" if w == self.secret_word else w
+            f"{w}" if w == self.secret_word else w
             for w in self.word_list[start:end]
         ]
  
