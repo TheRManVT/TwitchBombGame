@@ -12,7 +12,7 @@ The game has two phases:
 The bot silently counts chat messages. After a random number of messages (between `MIN_MESSAGES` and `MAX_MESSAGES`) the bomb arms and Phase 2 begins.
 
 **Phase 2 — Armed**
-A secret word is chosen at random from the word list. The bot announces that the bomb is armed and tells chat how many messages they have left. If **anyone** says the secret word (case-insensitive, anywhere in their message) the bomb is defused and the game resets to Phase 1. If the word is **not** said within the countdown, `!bomb` fires and the secret word is revealed.
+A secret word is chosen at random from the word list. The bot announces that the bomb is armed and tells chat how many messages they have left. If **anyone** says the secret word (case-insensitive, anywhere in their message) the bomb is defused and the game resets to Phase 1. If the word is **not** said within the countdown, `!bomb` fires and the secret word is revealed(you nmeed to create the command through your chatbot of choice).
 
 ---
 
