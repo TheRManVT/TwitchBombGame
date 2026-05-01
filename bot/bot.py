@@ -171,8 +171,9 @@ class PhraseBot(commands.Bot):
         )
  
         await channel.send(
-            f"💣 A bomb has been planted and armed! "
-            f"Find the secret word within {self.armed_trigger} message(s) or face the consequences... 🔴"
+            f", 💣 A bomb has been planted and armed! "
+            f"Find the secret word within {self.armed_trigger} message(s) or face the consequences... 🔴 "
+            f"(Hint: use !currentword for a clue — but it'll cost you!)"
         )
  
     async def _disarm(self, message):
